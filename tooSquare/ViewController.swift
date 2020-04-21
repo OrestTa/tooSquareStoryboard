@@ -11,10 +11,23 @@ import UIKit
 class ViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
+    var imageSet = false
 
+    func drawRectangle(width: CGFloat, height: CGFloat) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: width, height: height))
+        let img = renderer.image { ctx in
+            let rectangle = CGRect(x: 0, y: 0, width: width, height: height)
+            ctx.cgContext.setFillColor(UIColor.white.cgColor)
+            ctx.cgContext.addRect(rectangle)
+            ctx.cgContext.drawPath(using: .fill)
+        }
+        return img
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        imageView.image = drawRectangle(width: 2048, height: 2048)
     }
 
     //MARK: - Action for fetch image from Camera
@@ -44,9 +57,17 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     
     // MARK: - UIImagePickerControllerDelegate Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage]
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
-            imageView.image = image as? UIImage
+            let width = image.size.width
+            print(width)
+            let height = image.size.height
+            print(height)
+            let maxDimension = max(width, height)
+            print(maxDimension)
+            imageView.image = drawRectangle(width: maxDimension, height: maxDimension)
+            imageView.image = UIImage.imageByCombiningImage(firstImage: imageView.image!, withImage: image)
+            imageSet = true
         }
         else
         {
@@ -58,5 +79,51 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func saveButton(_ sender: Any) {
+        guard let image = imageView.image else { return }
+        guard imageSet else { return }
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
 }
 
+extension UIImage {
+    
+    class func imageByCombiningImage(firstImage: UIImage, withImage secondImage: UIImage) -> UIImage {
+        
+        let newImageWidth  = max(firstImage.size.width,  secondImage.size.width )
+        let newImageHeight = max(firstImage.size.height, secondImage.size.height)
+        let newImageSize = CGSize(width : newImageWidth, height: newImageHeight)
+        
+        
+        UIGraphicsBeginImageContextWithOptions(newImageSize, false, 1)
+        
+        let firstImageDrawX  = round((newImageSize.width  - firstImage.size.width  ) / 2)
+        let firstImageDrawY  = round((newImageSize.height - firstImage.size.height ) / 2)
+        
+        let secondImageDrawX = round((newImageSize.width  - secondImage.size.width ) / 2)
+        let secondImageDrawY = round((newImageSize.height - secondImage.size.height) / 2)
+        
+        firstImage .draw(at: CGPoint(x: firstImageDrawX,  y: firstImageDrawY))
+        secondImage.draw(at: CGPoint(x: secondImageDrawX, y: secondImageDrawY))
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        
+        return image!
+    }
+}

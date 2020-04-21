@@ -21,7 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Images</string>
+	<string>Taking a new image</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Saving adjusted images</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
