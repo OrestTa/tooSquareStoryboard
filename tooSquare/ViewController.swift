@@ -60,11 +60,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
             let width = image.size.width
-            print(width)
             let height = image.size.height
-            print(height)
             let maxDimension = max(width, height)
-            print(maxDimension)
             imageView.image = drawRectangle(width: maxDimension, height: maxDimension)
             imageView.image = UIImage.imageByCombiningImage(firstImage: imageView.image!, withImage: image)
             imageSet = true
