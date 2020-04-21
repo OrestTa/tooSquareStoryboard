@@ -13,6 +13,8 @@
 		042E1AEA244F05D000A9B0B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042E1AE8244F05D000A9B0B4 /* Main.storyboard */; };
 		042E1AEC244F05D200A9B0B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042E1AEB244F05D200A9B0B4 /* Assets.xcassets */; };
 		042E1AEF244F05D200A9B0B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042E1AED244F05D200A9B0B4 /* LaunchScreen.storyboard */; };
+		0491A3B7244F1E71002FF9F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0491A3B6244F1E70002FF9F7 /* GoogleService-Info.plist */; };
+		C797A46BF8C3D6AD5B715D2F /* Pods_tooSquare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44AE69CF318C75B8AA70196A /* Pods_tooSquare.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,10 @@
 		042E1AEB244F05D200A9B0B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		042E1AEE244F05D200A9B0B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		042E1AF0244F05D200A9B0B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0491A3B6244F1E70002FF9F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		44AE69CF318C75B8AA70196A /* Pods_tooSquare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tooSquare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8626459B77703F367321DF38 /* Pods-tooSquare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tooSquare.debug.xcconfig"; path = "Target Support Files/Pods-tooSquare/Pods-tooSquare.debug.xcconfig"; sourceTree = "<group>"; };
+		9C93CBCE24ABE6352996E5BB /* Pods-tooSquare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tooSquare.release.xcconfig"; path = "Target Support Files/Pods-tooSquare/Pods-tooSquare.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C797A46BF8C3D6AD5B715D2F /* Pods_tooSquare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +49,8 @@
 			children = (
 				042E1AE1244F05D000A9B0B4 /* tooSquare */,
 				042E1AE0244F05D000A9B0B4 /* Products */,
+				2655D5A23958E1D2E5A107EA /* Pods */,
+				F219B29D2EB82BF1911A6992 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,8 +72,27 @@
 				042E1AEB244F05D200A9B0B4 /* Assets.xcassets */,
 				042E1AED244F05D200A9B0B4 /* LaunchScreen.storyboard */,
 				042E1AF0244F05D200A9B0B4 /* Info.plist */,
+				0491A3B6244F1E70002FF9F7 /* GoogleService-Info.plist */,
 			);
 			path = tooSquare;
+			sourceTree = "<group>";
+		};
+		2655D5A23958E1D2E5A107EA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8626459B77703F367321DF38 /* Pods-tooSquare.debug.xcconfig */,
+				9C93CBCE24ABE6352996E5BB /* Pods-tooSquare.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F219B29D2EB82BF1911A6992 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44AE69CF318C75B8AA70196A /* Pods_tooSquare.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 042E1AF3244F05D200A9B0B4 /* Build configuration list for PBXNativeTarget "tooSquare" */;
 			buildPhases = (
+				6B2F1252966D2303B0878661 /* [CP] Check Pods Manifest.lock */,
 				042E1ADB244F05D000A9B0B4 /* Sources */,
 				042E1ADC244F05D000A9B0B4 /* Frameworks */,
 				042E1ADD244F05D000A9B0B4 /* Resources */,
+				5E65DEA89405071561EDA2CF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,12 +156,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				042E1AEF244F05D200A9B0B4 /* LaunchScreen.storyboard in Resources */,
+				0491A3B7244F1E71002FF9F7 /* GoogleService-Info.plist in Resources */,
 				042E1AEC244F05D200A9B0B4 /* Assets.xcassets in Resources */,
 				042E1AEA244F05D000A9B0B4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5E65DEA89405071561EDA2CF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tooSquare/Pods-tooSquare-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tooSquare/Pods-tooSquare-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tooSquare/Pods-tooSquare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B2F1252966D2303B0878661 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tooSquare-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		042E1ADB244F05D000A9B0B4 /* Sources */ = {
@@ -282,6 +355,7 @@
 		};
 		042E1AF4244F05D200A9B0B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8626459B77703F367321DF38 /* Pods-tooSquare.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +374,7 @@
 		};
 		042E1AF5244F05D200A9B0B4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C93CBCE24ABE6352996E5BB /* Pods-tooSquare.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
