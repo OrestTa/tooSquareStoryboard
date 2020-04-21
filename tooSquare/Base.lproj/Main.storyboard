@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,50 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="tooSquare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jFv-xu-Ynr">
+                                <rect key="frame" x="20" y="82" width="374" height="780"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YV-Mz-5FF">
+                                <rect key="frame" x="340" y="44" width="54" height="30"/>
+                                <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="actionClickOnCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t9N-We-YEz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fs-rb-PR0">
+                                <rect key="frame" x="20" y="44" width="48" height="30"/>
+                                <state key="normal" title="Library"/>
+                                <connections>
+                                    <action selector="actionClickOnGallery:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uxM-LX-bGe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7YV-Mz-5FF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Fs-rb-PR0" secondAttribute="trailing" constant="8" symbolic="YES" id="0Vg-VI-xZW"/>
+                            <constraint firstItem="6Fs-rb-PR0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4Hl-Ql-2yN"/>
+                            <constraint firstItem="jFv-xu-Ynr" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="9bL-Uc-F5D"/>
+                            <constraint firstItem="6Fs-rb-PR0" firstAttribute="leading" secondItem="jFv-xu-Ynr" secondAttribute="leading" id="Qz5-W8-4TS"/>
+                            <constraint firstItem="jFv-xu-Ynr" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Wjb-BV-HU8"/>
+                            <constraint firstItem="6Fs-rb-PR0" firstAttribute="baseline" secondItem="7YV-Mz-5FF" secondAttribute="baseline" id="bBn-9Q-lrs"/>
+                            <constraint firstItem="jFv-xu-Ynr" firstAttribute="trailing" secondItem="7YV-Mz-5FF" secondAttribute="trailing" id="lR7-Vx-fJ5"/>
+                            <constraint firstItem="6Fs-rb-PR0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="xbw-6d-0HE"/>
+                            <constraint firstItem="jFv-xu-Ynr" firstAttribute="top" secondItem="6Fs-rb-PR0" secondAttribute="bottom" constant="8" id="yyB-dn-10s"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="jFv-xu-Ynr" id="h4F-qy-s76"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="123.88392857142857"/>
         </scene>
     </scenes>
 </document>
