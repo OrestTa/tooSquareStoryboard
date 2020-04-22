@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var logoButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -32,7 +32,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         // Do any additional setup after loading the view.
         activityIndicator.stopAnimating()
     }
-
+    
+    @IBAction func logoButtonPressed(_ sender: UIButton) {
+        actionClickOnGallery(sender)
+    }
+    
     //MARK: - Action for fetch image from Camera
     @IBAction func actionClickOnCamera(_ sender: UIButton) {
         //This condition is used for check availability of camera
@@ -89,7 +93,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         let maxDimension = max(width, height)
         imageView.image = drawRectangle(width: maxDimension, height: maxDimension)
         imageView.image = UIImage.imageByCombiningImage(firstImage: imageView.image!, withImage: image)
-        logoImageView.isHidden = true
+        logoButton.isHidden = true
         saveButton.isEnabled = true
     }
     
