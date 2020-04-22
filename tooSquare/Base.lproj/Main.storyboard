@@ -15,30 +15,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jFv-xu-Ynr">
-                                <rect key="frame" x="20" y="82" width="374" height="678"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="w8W-ca-ibY">
+                                <rect key="frame" x="84" y="50" width="246" height="806"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="jFv-xu-Ynr">
+                                <rect key="frame" x="20" y="114" width="374" height="678"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YV-Mz-5FF">
-                                <rect key="frame" x="278" y="44" width="116" height="30"/>
-                                <state key="normal" title="Take new picture"/>
+                                <rect key="frame" x="275" y="76" width="119" height="30"/>
+                                <state key="normal" title="Take New Picture"/>
                                 <connections>
                                     <action selector="actionClickOnCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t9N-We-YEz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fs-rb-PR0">
-                                <rect key="frame" x="20" y="44" width="133" height="30"/>
+                                <rect key="frame" x="20" y="76" width="133" height="30"/>
                                 <state key="normal" title="Import from Library"/>
                                 <connections>
                                     <action selector="actionClickOnGallery:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uxM-LX-bGe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGb-hb-LeS">
-                                <rect key="frame" x="0.0" y="768" width="414" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGb-hb-LeS">
+                                <rect key="frame" x="0.0" y="800" width="414" height="30"/>
                                 <state key="normal" title="Save to Library"/>
                                 <connections>
                                     <action selector="saveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5iH-vL-WGB"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="4ks-T0-MQu">
+                                <rect key="frame" x="188.5" y="434.5" width="37" height="37"/>
+                                <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -50,15 +57,26 @@
                             <constraint firstItem="YGb-hb-LeS" firstAttribute="top" secondItem="jFv-xu-Ynr" secondAttribute="bottom" constant="8" id="Rfo-32-Tfz"/>
                             <constraint firstItem="6Fs-rb-PR0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Vgj-wX-Ycv"/>
                             <constraint firstItem="7YV-Mz-5FF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Fs-rb-PR0" secondAttribute="trailing" constant="8" symbolic="YES" id="Y9A-KE-t0L"/>
+                            <constraint firstItem="w8W-ca-ibY" firstAttribute="top" secondItem="jFv-xu-Ynr" secondAttribute="top" constant="-64" id="ZKs-wW-QOU"/>
+                            <constraint firstItem="4ks-T0-MQu" firstAttribute="centerY" secondItem="jFv-xu-Ynr" secondAttribute="centerY" id="avn-V2-ZT6"/>
+                            <constraint firstItem="w8W-ca-ibY" firstAttribute="leading" secondItem="jFv-xu-Ynr" secondAttribute="leading" constant="64" id="d6I-Mc-cbK"/>
                             <constraint firstItem="jFv-xu-Ynr" firstAttribute="top" secondItem="6Fs-rb-PR0" secondAttribute="bottom" constant="8" symbolic="YES" id="eSO-JF-0sI"/>
+                            <constraint firstItem="jFv-xu-Ynr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="hEp-aG-2N3"/>
+                            <constraint firstItem="w8W-ca-ibY" firstAttribute="bottom" secondItem="jFv-xu-Ynr" secondAttribute="bottom" constant="64" id="hlB-OR-XQj"/>
                             <constraint firstItem="7YV-Mz-5FF" firstAttribute="trailing" secondItem="jFv-xu-Ynr" secondAttribute="trailing" id="iWI-0d-FWW"/>
-                            <constraint firstItem="6Fs-rb-PR0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jKd-AU-bTf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YGb-hb-LeS" secondAttribute="bottom" constant="64" id="kj0-PT-Bem"/>
+                            <constraint firstItem="6Fs-rb-PR0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="jKd-AU-bTf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YGb-hb-LeS" secondAttribute="bottom" constant="32" id="kj0-PT-Bem"/>
+                            <constraint firstItem="4ks-T0-MQu" firstAttribute="centerX" secondItem="jFv-xu-Ynr" secondAttribute="centerX" id="nuU-pd-It0"/>
+                            <constraint firstItem="w8W-ca-ibY" firstAttribute="trailing" secondItem="jFv-xu-Ynr" secondAttribute="trailing" constant="-64" id="p1l-CJ-a3c"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jFv-xu-Ynr" secondAttribute="bottom" constant="70" id="tSm-4Q-kAq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="4ks-T0-MQu" id="rkF-lz-BKV"/>
                         <outlet property="imageView" destination="jFv-xu-Ynr" id="h4F-qy-s76"/>
+                        <outlet property="logoImageView" destination="w8W-ca-ibY" id="VFV-4h-gqU"/>
+                        <outlet property="saveButton" destination="YGb-hb-LeS" id="BG8-59-GS7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -66,4 +84,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="123.88392857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="1024" height="1024"/>
+    </resources>
 </document>

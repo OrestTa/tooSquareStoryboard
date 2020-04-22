@@ -10,9 +10,12 @@ import UIKit
 
 class ViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
-    var imageSet = false
-
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var saveButton: UIButton!
+    
     func drawRectangle(width: CGFloat, height: CGFloat) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: width, height: height))
         let img = renderer.image { ctx in
@@ -27,7 +30,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        imageView.image = drawRectangle(width: 2048, height: 2048)
+        activityIndicator.stopAnimating()
     }
 
     //MARK: - Action for fetch image from Camera
@@ -57,28 +60,41 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     
     // MARK: - UIImagePickerControllerDelegate Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        {
-            let width = image.size.width
-            let height = image.size.height
-            let maxDimension = max(width, height)
-            imageView.image = drawRectangle(width: maxDimension, height: maxDimension)
-            imageView.image = UIImage.imageByCombiningImage(firstImage: imageView.image!, withImage: image)
-            imageSet = true
-        }
-        else
-        {
-            //error
-        }
-        self.dismiss(animated: true, completion: nil)
+        activityIndicator.startAnimating()
+        self.dismiss(animated: true, completion: {
+            self.imagePicked(info: info)
+        })
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     
+    func imagePicked(info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        {
+            processImage(image: image)
+        }
+        else
+        {
+            let ac = UIAlertController(title: "Image read error", message: "No UIImage found", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+        activityIndicator.stopAnimating()
+    }
+    
+    func processImage(image: UIImage) {
+        let width = image.size.width
+        let height = image.size.height
+        let maxDimension = max(width, height)
+        imageView.image = drawRectangle(width: maxDimension, height: maxDimension)
+        imageView.image = UIImage.imageByCombiningImage(firstImage: imageView.image!, withImage: image)
+        logoImageView.isHidden = true
+        saveButton.isEnabled = true
+    }
+    
     @IBAction func saveButton(_ sender: Any) {
         guard let image = imageView.image else { return }
-        guard imageSet else { return }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
