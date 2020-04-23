@@ -42,44 +42,58 @@
                                     <action selector="actionClickOnCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t9N-We-YEz"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="4ks-T0-MQu">
+                                <rect key="frame" x="188.5" y="434.5" width="37" height="37"/>
+                                <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                            </activityIndicatorView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Oty-uC-gmW">
+                                <rect key="frame" x="20" y="800" width="125" height="31"/>
+                                <segments>
+                                    <segment title="Square"/>
+                                    <segment title="4:5"/>
+                                </segments>
+                                <connections>
+                                    <action selector="aspectControlChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="IEw-Xl-U46"/>
+                                </connections>
+                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGb-hb-LeS">
-                                <rect key="frame" x="0.0" y="800" width="414" height="30"/>
+                                <rect key="frame" x="291" y="800" width="103" height="30"/>
                                 <state key="normal" title="Save to Library"/>
                                 <connections>
                                     <action selector="saveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5iH-vL-WGB"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="4ks-T0-MQu">
-                                <rect key="frame" x="188.5" y="434.5" width="37" height="37"/>
-                                <color key="color" cocoaTouchSystemColor="darkTextColor"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="YGb-hb-LeS" firstAttribute="centerX" secondItem="jFv-xu-Ynr" secondAttribute="centerX" id="2Ul-Ea-cET"/>
+                            <constraint firstItem="Oty-uC-gmW" firstAttribute="leading" secondItem="jFv-xu-Ynr" secondAttribute="leading" id="6D8-Cm-xYo"/>
                             <constraint firstItem="7YV-Mz-5FF" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="AXj-57-GCo"/>
                             <constraint firstItem="6Fs-rb-PR0" firstAttribute="baseline" secondItem="7YV-Mz-5FF" secondAttribute="baseline" id="Cop-so-Vdt"/>
-                            <constraint firstItem="YGb-hb-LeS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Gbd-Vu-ZDh"/>
                             <constraint firstItem="6Fs-rb-PR0" firstAttribute="leading" secondItem="jFv-xu-Ynr" secondAttribute="leading" id="O64-F3-ntf"/>
                             <constraint firstItem="YGb-hb-LeS" firstAttribute="top" secondItem="jFv-xu-Ynr" secondAttribute="bottom" constant="8" id="Rfo-32-Tfz"/>
+                            <constraint firstItem="Oty-uC-gmW" firstAttribute="centerY" secondItem="YGb-hb-LeS" secondAttribute="centerY" id="SIU-wV-Lqq"/>
                             <constraint firstItem="M0U-kg-Bam" firstAttribute="trailing" secondItem="jFv-xu-Ynr" secondAttribute="trailing" constant="-64" id="Tob-SZ-znD"/>
                             <constraint firstItem="6Fs-rb-PR0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Vgj-wX-Ycv"/>
                             <constraint firstItem="M0U-kg-Bam" firstAttribute="centerY" secondItem="jFv-xu-Ynr" secondAttribute="centerY" id="X44-gh-Jdr"/>
                             <constraint firstItem="7YV-Mz-5FF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Fs-rb-PR0" secondAttribute="trailing" constant="8" symbolic="YES" id="Y9A-KE-t0L"/>
+                            <constraint firstItem="YGb-hb-LeS" firstAttribute="trailing" secondItem="7YV-Mz-5FF" secondAttribute="trailing" id="agS-sO-BTK"/>
                             <constraint firstItem="4ks-T0-MQu" firstAttribute="centerY" secondItem="jFv-xu-Ynr" secondAttribute="centerY" id="avn-V2-ZT6"/>
                             <constraint firstItem="jFv-xu-Ynr" firstAttribute="top" secondItem="6Fs-rb-PR0" secondAttribute="bottom" constant="8" symbolic="YES" id="eSO-JF-0sI"/>
+                            <constraint firstItem="YGb-hb-LeS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Oty-uC-gmW" secondAttribute="trailing" constant="8" symbolic="YES" id="g4Q-eE-m2P"/>
                             <constraint firstItem="jFv-xu-Ynr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="hEp-aG-2N3"/>
                             <constraint firstItem="M0U-kg-Bam" firstAttribute="leading" secondItem="jFv-xu-Ynr" secondAttribute="leading" constant="64" id="iSk-tL-tNK"/>
                             <constraint firstItem="7YV-Mz-5FF" firstAttribute="trailing" secondItem="jFv-xu-Ynr" secondAttribute="trailing" id="iWI-0d-FWW"/>
                             <constraint firstItem="6Fs-rb-PR0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="jKd-AU-bTf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YGb-hb-LeS" secondAttribute="bottom" constant="32" id="kj0-PT-Bem"/>
                             <constraint firstItem="4ks-T0-MQu" firstAttribute="centerX" secondItem="jFv-xu-Ynr" secondAttribute="centerX" id="nuU-pd-It0"/>
+                            <constraint firstItem="Oty-uC-gmW" firstAttribute="top" secondItem="YGb-hb-LeS" secondAttribute="top" id="qog-bs-azF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jFv-xu-Ynr" secondAttribute="bottom" constant="70" id="tSm-4Q-kAq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="4ks-T0-MQu" id="rkF-lz-BKV"/>
+                        <outlet property="aspectControl" destination="Oty-uC-gmW" id="AHo-jw-y4a"/>
                         <outlet property="imageView" destination="jFv-xu-Ynr" id="h4F-qy-s76"/>
                         <outlet property="logoButton" destination="M0U-kg-Bam" id="Ghr-Pg-WsF"/>
                         <outlet property="saveButton" destination="YGb-hb-LeS" id="BG8-59-GS7"/>

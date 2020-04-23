@@ -12,7 +12,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
 
     @IBOutlet weak var logoButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
-    
+    @IBOutlet weak var aspectControl: UISegmentedControl!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var saveButton: UIButton!
     
@@ -37,6 +37,14 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     
     @IBAction func logoButtonPressed(_ sender: UIButton) {
         actionClickOnGallery(sender)
+    }
+    
+    @IBAction func aspectControlChanged(_ sender: Any) {
+        if let image = pickedImage {
+            activityIndicator.startAnimating()
+            addStripes(toImage: image)
+            activityIndicator.stopAnimating()
+        }
     }
     
     //MARK: - Action for fetch image from Camera
@@ -79,7 +87,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
             pickedImage = image
-            addStripes(toImage: image, withRatio: 4/5) // todo
+            addStripes(toImage: image)
         }
         else
         {
@@ -90,16 +98,17 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         activityIndicator.stopAnimating()
     }
     
-    func addStripes(toImage image: UIImage, withRatio ratio: CGFloat) {
+    func addStripes(toImage image: UIImage) {
+        let aspectRatio = aspectControl.selectedSegmentIndex == 0 ? CGFloat(1/1.0) : CGFloat(4/5.0)
         var width = image.size.width
         var height = image.size.height
-        let originalRatio = width/height
-        if originalRatio > ratio {
+        let originalAspectRatio = width/height
+        if originalAspectRatio > aspectRatio {
             // we need to extend the height
-            height = width / ratio
+            height = width / aspectRatio
         } else {
             // we need to extend the width
-            width = height * ratio
+            width = height * aspectRatio
         }
         
         let whiteImage = drawRectangle(width: width, height: height)
