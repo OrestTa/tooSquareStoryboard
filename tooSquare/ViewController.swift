@@ -16,6 +16,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var saveButton: UIButton!
     
+    var pickedImage: UIImage?
+    
     func drawRectangle(width: CGFloat, height: CGFloat) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: width, height: height))
         let img = renderer.image { ctx in
@@ -76,7 +78,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     func imagePicked(info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
-            processImage(image: image)
+            pickedImage = image
+            addStripes(toImage: image, withRatio: 4/5) // todo
         }
         else
         {
@@ -87,12 +90,20 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
         activityIndicator.stopAnimating()
     }
     
-    func processImage(image: UIImage) {
-        let width = image.size.width
-        let height = image.size.height
-        let maxDimension = max(width, height)
-        imageView.image = drawRectangle(width: maxDimension, height: maxDimension)
-        imageView.image = UIImage.imageByCombiningImage(firstImage: imageView.image!, withImage: image)
+    func addStripes(toImage image: UIImage, withRatio ratio: CGFloat) {
+        var width = image.size.width
+        var height = image.size.height
+        let originalRatio = width/height
+        if originalRatio > ratio {
+            // we need to extend the height
+            height = width / ratio
+        } else {
+            // we need to extend the width
+            width = height * ratio
+        }
+        
+        let whiteImage = drawRectangle(width: width, height: height)
+        imageView.image = UIImage.imageByCombiningImage(firstImage: whiteImage, withImage: image)
         logoButton.isHidden = true
         saveButton.isEnabled = true
     }
@@ -112,6 +123,10 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
             let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
+            
+            imageView.image = nil
+            logoButton.isHidden = false
+            saveButton.isEnabled = false
         }
     }
 }
